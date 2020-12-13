@@ -11,5 +11,10 @@ pipeline {
         bat 'run.bat'
       }
     }
+    stage('Test'){
+      steps{
+        bat 'test.bat'
+      }
+    }
   }
 }
