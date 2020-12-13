@@ -5,4 +5,3 @@ pandas
 pyemd
 prometheus_client
 requests
-Appium-Python-Client
