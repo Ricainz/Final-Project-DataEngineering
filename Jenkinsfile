@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Remove image'){
       steps{
-        bat 'remove.bat'
+        echo 'remove.bat'
       }
     }
     stage('Building'){
       steps{
-        bat 'build.bat'
+        echo 'build.bat'
       }
     }
     stage('Running'){
