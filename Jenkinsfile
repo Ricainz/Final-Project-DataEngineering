@@ -16,5 +16,10 @@ pipeline {
         bat 'test.bat'
       }
     }
+    stage('Remove image'){
+      steps{
+        bat 'remove.bat'
+      }
+    }
   }
 }
