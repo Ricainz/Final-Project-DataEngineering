@@ -3,12 +3,12 @@ import random
 import re
 from gensim import models
 from nltk.corpus import stopwords
+
 from nltk import word_tokenize, download
 from gensim.similarities import WmdSimilarity
 import pandas as pd
 download('stopwords')
 download('punkt')
-
 
 app = Flask(__name__)
 
