@@ -1,1 +1,1 @@
-python -m unittest
+python -m unittest test_app.py
