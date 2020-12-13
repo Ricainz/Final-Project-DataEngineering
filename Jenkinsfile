@@ -1,15 +1,15 @@
-pipeline{
+pipeline {
   agent any
   stages {
-    stage('Build Flask app'){
+    stage('Building'){
       steps{
         sh 'docker-compose build'
       }
     }
-    stage('Run docker images'){
-          steps{
-            sh 'docker-compose up'
-          }
-}
-}
+    stage('Running'){
+      steps{
+        sh 'docker-compose up'
+      }
+    }
+  }
 }
