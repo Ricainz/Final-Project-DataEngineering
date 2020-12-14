@@ -6,8 +6,8 @@ def stress_test(){
 }
 
 def user_acceptance(){
-  input 'Confirm push to main?' 
 }
+
 def remove(){
   bat 'remove.bat'
 }
@@ -16,7 +16,14 @@ def release(){
 }
 
 def live(){
-  echo 'pushed to main'
+}
+
+def unittest(){
+  bat 'test.bat'
+}
+
+def test_done(){
+  echo 'Test Validation'
 }
 
 return this
