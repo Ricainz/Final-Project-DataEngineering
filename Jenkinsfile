@@ -24,13 +24,6 @@ pipeline {
         }
       }
     }
-    stage('StressTest'){
-      steps{
-        script{
-          groovyfile.stress_test()
-        }
-      }
-    }
     stage('Merging'){
       steps{
         script{
@@ -38,13 +31,6 @@ pipeline {
         }
       }
     }
-      stage('Release branch'){
-        steps{
-		script{
-          groovyfile.release()
-		}
-        }
-      }
 	  stage('Pushed'){
         steps{
 		script{
