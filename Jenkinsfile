@@ -24,19 +24,19 @@ pipeline {
         }
       }
     }
-    stage('Merging'){
+    stage('Unit tests'){
       steps{
         script{
-          groovyfile.user_acceptance()
+          groovyfile.unittest()
         }
       }
     }
-	  stage('Pushed'){
-        steps{
-		script{
-          groovyfile.live()
-		}
+	stage('Validation'){
+      steps{
+        script{
+          groovyfile.test_done()
         }
       }
+    }
     }
 }
