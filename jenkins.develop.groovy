@@ -11,7 +11,7 @@ def remove(){
 }
 
 def release(){
-  echo 'Push to release'
+  echo 'Push to release branch'
 }
 
 return this
