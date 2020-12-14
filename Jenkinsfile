@@ -10,13 +10,6 @@ pipeline {
 			}
 		}
 	  }
-    stage('Remove image'){
-      steps{
-        script{
-          groovyfile.remove()
-        }
-      }
-	}
     stage('Run app'){
       steps{
         script{
@@ -31,12 +24,19 @@ pipeline {
         }
       }
     }
-	stage('Validation'){
+    stage('Validation'){
       steps{
         script{
           groovyfile.test_done()
         }
       }
     }
+    stage('Remove image'){
+      steps{
+        script{
+          groovyfile.remove()
+        }
+      }
+	}
     }
 }
