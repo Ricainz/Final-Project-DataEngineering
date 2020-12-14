@@ -2,7 +2,7 @@ def groovyfile
 pipeline {
   agent any
   stages {
-    stage ('Groovy'){
+    stage ('Build'){
 	  	steps{
 			script{
 				 def filename = 'jenkins.' + env.BRANCH_NAME + '.groovy'
