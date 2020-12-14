@@ -3,7 +3,6 @@ def run_app(){
 }
   
 def stress_test(){
-  echo 'stress test running'
 }
 
 def remove(){
@@ -11,7 +10,6 @@ def remove(){
 }
 
 def release(){
-  echo 'Push to release'
 }
 
 return this
