@@ -3,8 +3,8 @@ services:
   web:
     build: 
       context: .
-      dockerfile: DockerFile
-    command: python -u app.py
+      dockerfile: Dockerfile
+    command: sh entrypoint.sh
     ports:
       - "5000:5000"
     volumes:

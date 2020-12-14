@@ -4,3 +4,4 @@ nltk
 pandas
 pyemd
 prometheus_client
+gunicorn

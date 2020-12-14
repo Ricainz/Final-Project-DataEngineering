@@ -8,11 +8,13 @@ from nltk import word_tokenize, download
 from gensim.similarities import WmdSimilarity
 from prometheus_client import start_http_server, Counter, Gauge, Summary
 import pandas as pd
-download('stopwords')
-download('punkt')
+#download('stopwords')
+#download('punkt')
 
 
 app = Flask(__name__)
+
+app.config['DEBUG'] = True
 
 # MONITORING
 REQUESTS = Counter('page_accesses', 'Main page acces')
