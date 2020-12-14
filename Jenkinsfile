@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Remove image'){
-      steps{
-        bat 'remove.bat'
-      }
-    }
     stage('Building'){
       steps{
         bat 'build.bat'
@@ -19,6 +14,11 @@ pipeline {
     stage('Test'){
       steps{
         bat 'test.bat'
+      }
+    }
+    stage('Remove image'){
+      steps{
+        bat 'remove.bat'
       }
     }
   }
