@@ -25,6 +25,13 @@ pipeline {
         }
       }
     }
+    stage('Merging'){
+      steps{
+        script{
+          groovyfile.user_acceptance()
+        }
+      }
+    }
     stage('Remove image'){
       steps{
         script{
@@ -36,6 +43,13 @@ pipeline {
         steps{
 		script{
           groovyfile.release()
+		}
+        }
+      }
+	  stage('Pushed'){
+        steps{
+		script{
+          groovyfile.live()
 		}
         }
       }
