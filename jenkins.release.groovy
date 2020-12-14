@@ -5,11 +5,18 @@ def run_app(){
 def stress_test(){
 }
 
+def user_acceptance(){
+  input 'Confirm push to main?' 
+}
 def remove(){
   bat 'remove.bat'
 }
 
 def release(){
+}
+
+def live(){
+  echo 'pushed to main'
 }
 
 return this
