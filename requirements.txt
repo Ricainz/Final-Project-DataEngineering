@@ -6,4 +6,4 @@ pyemd
 prometheus_client
 gunicorn
 locust
-
+prometheus_flask_exporter

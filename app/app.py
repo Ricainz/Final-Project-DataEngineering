@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize, download
 from gensim.similarities import WmdSimilarity
 from prometheus_client import start_http_server, Counter, Gauge, Summary
+from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
 import pandas as pd
 #download('stopwords')
 #download('punkt')
@@ -15,15 +16,8 @@ import pandas as pd
 app = Flask(__name__)
 
 app.config['DEBUG'] = True
-
+metrics = GunicornPrometheusMetrics(app)
 # MONITORING
-REQUESTS = Counter('page_accesses', 'Main page acces')
-REQUESTS_RESULTS = Counter('page_results', 'Result page acces')
-INPROGRESS = Gauge('page_accesses_inprogress', 'Number of visits in progress.')
-LAST = Gauge('page_accesses_last_time_seconds', 'The last time a result page was served.')
-LATENCY = Summary('latency_from_main_to_results', 'Time for a request to process')
-
-
 
 
 stop_words = stopwords.words('english')
@@ -54,16 +48,18 @@ def clean_text(text):
 
 
 @app.route('/')
+@metrics.counter('page_accesses', 'Main page acces')
 def index():
-    REQUESTS.inc()
     return render_template('base.html')
 
 @app.route('/result', methods=['POST'])
+@metrics.counter('page_results', 'Result page acces')
+@metrics.gauge('page_accesses_inprogress', 'Number of visits in progress.')
+@metrics.summary('latency_from_main_to_results', 'Time for a request to process',
+                 labels={'status': lambda r: r.status_code})
 def result():
     if request.method == 'POST':
-        REQUESTS_RESULTS.inc()
-        INPROGRESS.inc()
-        REQUESTS.inc()
+       
         start = time.time()
         data =  request.form['Sentence']
         cleaned_data = clean_text(data)
@@ -75,9 +71,7 @@ def result():
             res_score.append(similar[i][1])
             res_text.append(df_corpus['corpus'][similar[i][0]])
         res_score = ["{:.3f}".format(score) for score in res_score]
-        LAST.set(time.time())
-        INPROGRESS.dec()
-        LATENCY.observe(time.time() - start)
+     
         return render_template('results.html',res=zip(res_score,res_text),querry=data)
     return render_template('base.html')
 

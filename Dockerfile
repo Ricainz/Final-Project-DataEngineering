@@ -9,3 +9,5 @@ RUN python -m nltk.downloader punkt
 ADD . /app
 RUN chmod +x ./entrypoint.sh
 EXPOSE 5000
+EXPOSE 8080
+ENV prometheus_multiproc_dir /tmp
