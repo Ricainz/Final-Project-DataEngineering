@@ -5,3 +5,5 @@ pandas
 pyemd
 prometheus_client
 gunicorn
+locust
+
