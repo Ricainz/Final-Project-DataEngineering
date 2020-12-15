@@ -6,7 +6,6 @@ from gensim import models
 from nltk.corpus import stopwords
 from nltk import word_tokenize, download
 from gensim.similarities import WmdSimilarity
-from prometheus_client import start_http_server, Counter, Gauge, Summary
 from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
 import pandas as pd
 #download('stopwords')
@@ -76,5 +75,5 @@ def result():
     return render_template('base.html')
 
 if __name__ == "__main__":
-    start_http_server(8010)
+  
     app.run(host='0.0.0.0')
