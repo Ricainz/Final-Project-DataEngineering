@@ -11,6 +11,11 @@ pipeline {
         bat 'run.bat'
       }
     }
+    stage('Live !'){
+      steps{
+        bat 'live.bat'
+      }
+    }
     stage('Remove image'){
       steps{
         bat 'remove.bat'
