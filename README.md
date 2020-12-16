@@ -21,7 +21,7 @@ We used Jenkins to test, automate and build the application.
 
 We used Prometheus to monitor some hardware and software metrics and Grafana for the dashboard.
 
-Trello link: https://trello.com/b/Z8EsTpsX/finale-project-data-engineering
+Trello link: https://trello.com/b/Z8EsTpsX/final-project-data-engineering
 
 port:5000 hostname: 0.0.0.0
 
